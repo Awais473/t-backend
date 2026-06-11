@@ -3,7 +3,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.api import backtest, candles, performance, signals, strategies, strategy_metrics, trades, ws
+from app.api import backtest, candles, indicators, performance, signals, strategies, strategy_metrics, trades, ws
 from app.config import settings
 from app.database import Base, engine
 from app.services.binance_stream import stream_manager
@@ -36,6 +36,7 @@ app.include_router(signals.router)
 app.include_router(strategy_metrics.router)
 app.include_router(performance.router)
 app.include_router(backtest.router)
+app.include_router(indicators.router)
 app.include_router(ws.router)
 
 
